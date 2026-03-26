@@ -7,7 +7,7 @@ const allParagraphs = document.querySelectorAll(`p`);
 let score = 0;
 let isGameActive = false;
 let timerInterval;
-let startTime;
+let startTime; // od jakiego momentu liczyc czas
 
 function moveButton() {
   //math random
@@ -28,16 +28,22 @@ function finishGame() {
   isGameActive = false;
   clearInterval(timerInterval);
   uiBox.classList.add(`game-over-ui`);
-  button.style.pointerEvents = `none`; // nie da sie kliknac przycisku
+  button.style.pointerEvents = `none`; // nie da sie kliknac przycisku po zakonczeniu
+
+  setTimeout(function () {
+    alert(`Win! Time: ` + timeDisplay.innerText);
+  }, 467.67);
 }
 
 // 4. event listener
 button.addEventListener(`click`, function (event) {
-  if (event.target.id === `gameButton`) {
+  if (
+    event.target.id === `gameButton`
+  ) /* sprawdza czy kliknieto w przycisk a nie w blank spacea */ {
     if (score === 0) {
       isGameActive = true;
       startTime = new Date();
-      timerInterval = setInterval(updateTimer, 10);
+      timerInterval = setInterval(updateTimer, 1);
     }
     score++;
     scoreDisplay.innerText = `Score: ` + score;
@@ -52,9 +58,4 @@ window.addEventListener(`keydown`, function (event) {
 
 window.addEventListener(`resize`, function () {
   if (!isGameActive) button.style.top = `50%`;
-});
-
-// eventpreventdeault
-window.addEventListener(`contextmenu`, function (e) {
-  e.preventDefault();
 });

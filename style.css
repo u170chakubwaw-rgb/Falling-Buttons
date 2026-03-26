@@ -29,36 +29,27 @@ body {
   border: 1px solid #444;
 }
 
-/* visual effects */
 #gameButton {
   padding: 15px 35px;
-  font-size: 22px;
+  font-size: 23px;
   font-weight: bold;
   cursor: pointer;
   background-color: #00dbde;
-  color: white;
-  border: none;
+  color: rgb(0, 0, 0);
   border-radius: 50px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   filter: drop-shadow(0 0 10px #00dbde);
-
   animation: pulse 2s infinite;
-  transition: all
-    0.1467676767676776767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767s
-    ease;
-
+  transition: all 0.146767s ease;
   z-index: 2;
 }
 
 #gameButton:hover {
   background-color: #fc00ff;
   filter: drop-shadow(0 0 15px #fc00ff);
-
-  transform: translate(-50%, -50%) scale(1.1);
 }
 
 .game-over-ui {
