@@ -6,12 +6,15 @@ const allParagraphs = document.querySelectorAll(`p`);
 
 let score = 0;
 let isGameActive = false;
-let timerInterval, startTime;
+let timerInterval;
+let startTime;
 
 function moveButton() {
   //math random
-  button.style.left = Math.random() * (window.innerWidth - 150) + `px`;
-  button.style.top = Math.random() * (window.innerHeight - 150) + `px`;
+  button.style.left =
+    Math.random() /*losuje liczbe od 0 do 1 */ * (window.innerWidth - 150) +
+    `px`;
+  button.style.top = Math.random() * (window.innerHeight - 150) + `px`; //button nie wyleci przez inner width/heigth
   button.style.transform = `none`;
 }
 
@@ -24,12 +27,11 @@ function updateTimer() {
 function finishGame() {
   isGameActive = false;
   clearInterval(timerInterval);
-  button.style.display = `none`;
   uiBox.classList.add(`game-over-ui`);
-  alert(`Win! Time: ` + timeDisplay.innerText);
+  button.style.pointerEvents = `none`; // nie da sie kliknac przycisku
 }
 
-// 4. event lostener
+// 4. event listener
 button.addEventListener(`click`, function (event) {
   if (event.target.id === `gameButton`) {
     if (score === 0) {
