@@ -13,7 +13,7 @@ function moveButton() {
   //math random
   button.style.left = Math.random() * (window.innerWidth - 150) + `px`;
   button.style.top = Math.random() * (window.innerHeight - 150) + `px`; //button nie wyleci przez inner width/heigth
-  button.style.transform = `none`;
+  button.style.transform = `none`; // 2. Usuwa 'transform' z cssa żeby przycisk nie przesunął się o dodatkowe 50%
 }
 
 function updateTimer() {
@@ -29,7 +29,7 @@ function finishGame() {
   button.style.pointerEvents = `none`; // nie da sie kliknac przycisku po zakonczeniu
 
   setTimeout(function () {
-    alert(`Win! Time: ` + timeDisplay.innerText);
+    window.alert(`Win! Time: ` + timeDisplay.innerText);
   }, 467.67);
 }
 
@@ -56,5 +56,5 @@ window.addEventListener(`keydown`, function (event) {
 
 window.addEventListener(`resize`, function () {
   //pilnuje zeby przycisk byl na srodku przed zaczeciem gry
-  if (!isGameActive) button.style.top = `50%`;
+  if (isGameActive) button.style.top = `50%`;
 });
